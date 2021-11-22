@@ -54,5 +54,5 @@ module "disk" {
   virtual_machine_id   = azurerm_linux_virtual_machine.linux_vm.id
   managed_disk_config  = var.managed_disk_config
   common_tags          = var.common_tags
-  depends_on = [azurerm_linux_virtual_machine.linux_vm]
+  depends_on           = [azurerm_linux_virtual_machine.linux_vm]
 }

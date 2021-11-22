@@ -5,7 +5,7 @@
 variable "client_name" {
   description = "Client Short Name"
   type        = string
-  default     = "irg"
+  default     = "adgs"
 }
 
 variable "location" {
@@ -17,7 +17,7 @@ variable "location" {
 variable "project_name" {
   description = "Project short name"
   type        = string
-  default     = "co"
+  default     = "vm"
 }
 
 variable "environment" {

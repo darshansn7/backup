@@ -3,7 +3,7 @@
 #############################################################################
 
 resource "null_resource" "azcli" {
-triggers = {always_run = "${timestamp()}"}
+  triggers = { always_run = "${timestamp()}" }
   provisioner "remote-exec" {
     inline = [
       "echo 'build ssh connection' "
@@ -19,7 +19,7 @@ triggers = {always_run = "${timestamp()}"}
   provisioner "local-exec" {
     command = "ansible-playbook -i ${azurerm_network_interface.vm_nic.private_ip_address}, --private-key ${var.private_key} ${path.module}/ansible/azcli.yml -u ${var.vm_admin_username}"
   }
-  depends_on = [azurerm_linux_virtual_machine.linux_vm,module.disk]
+  depends_on = [azurerm_linux_virtual_machine.linux_vm, module.disk]
 }
 
 

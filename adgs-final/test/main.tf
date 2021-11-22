@@ -19,7 +19,7 @@ module "vm1" {
 
   #key-vault
   vm_key_name        = local.vm1_key_name
-  key_vault_name     = "test-key-vault4589"
+  key_vault_name     = "adgsvmdeployment"
   keyvault_vm_secret = local.vm1_keyvault_vm_secret
 
   #vm
@@ -50,17 +50,18 @@ module "vm1" {
   container_name          = "packages"
   custom_data             = filebase64("${path.module}/eg.sh")
   common_tags             = local.common_tags
-  # #vm backup
-  # recovery_services_vault_name = local.recovery_services_vault_name
-  # recovery_services_vault_sku  = "Standard"
-  # vm_backup_policy_name        = local.vm_backup_policy_name
-  # # policy
-  # time_zone                      = "UTC"
-  # instant_restore_retention_days = 2
-  # backup_frequency               = "Daily"
-  # backup_time                    = "06:30"
-  # retention_daily_count          = 10
-  # soft_delete_enabled            = true
+
+  #vm backup
+  recovery_services_vault_name = local.recovery_services_vault_name
+  recovery_services_vault_sku  = "Standard"
+  vm_backup_policy_name        = local.vm_backup_policy_name
+  # policy
+  time_zone                      = "UTC"
+  instant_restore_retention_days = 2
+  backup_frequency               = "Daily"
+  backup_time                    = "06:30"
+  retention_daily_count          = 10
+  soft_delete_enabled            = true
 }
 
 
@@ -79,7 +80,7 @@ module "vm2" {
 
   #key-vault
   vm_key_name        = local.vm2_key_name
-  key_vault_name     = "test-key-vault4589"
+  key_vault_name     = "adgsvmdeployment"
   keyvault_vm_secret = local.vm2_keyvault_vm_secret
 
   #vm
@@ -111,17 +112,17 @@ module "vm2" {
   custom_data             = filebase64("${path.module}/eg.sh")
   common_tags             = local.common_tags
   # #vm backup
-  # recovery_services_vault_name = local.recovery_services_vault_name
-  # recovery_services_vault_sku  = "Standard"
-  # vm_backup_policy_name        = local.vm_backup_policy_name
-  # # policy
-  # time_zone                      = "UTC"
-  # instant_restore_retention_days = 2
-  # backup_frequency               = "Daily"
-  # backup_time                    = "06:30"
-  # retention_daily_count          = 10
-  # soft_delete_enabled            = true
-  depends_on = [module.vm1]
+  recovery_services_vault_name = local.recovery_services_vault_name
+  recovery_services_vault_sku  = "Standard"
+  vm_backup_policy_name        = local.vm_backup_policy_name
+  # policy
+  time_zone                      = "UTC"
+  instant_restore_retention_days = 2
+  backup_frequency               = "Daily"
+  backup_time                    = "06:30"
+  retention_daily_count          = 10
+  soft_delete_enabled            = true
+  depends_on                     = [module.vm1]
 }
 
 module "vm3" {
@@ -139,7 +140,7 @@ module "vm3" {
 
   #key-vault
   vm_key_name        = local.vm3_key_name
-  key_vault_name     = "test-key-vault4589"
+  key_vault_name     = "adgsvmdeployment"
   keyvault_vm_secret = local.vm3_keyvault_vm_secret
 
   #vm
@@ -171,17 +172,17 @@ module "vm3" {
   custom_data             = filebase64("${path.module}/eg.sh")
   common_tags             = local.common_tags
   # #vm backup
-  # recovery_services_vault_name = local.recovery_services_vault_name
-  # recovery_services_vault_sku  = "Standard"
-  # vm_backup_policy_name        = local.vm_backup_policy_name
-  # # policy
-  # time_zone                      = "UTC"
-  # instant_restore_retention_days = 2
-  # backup_frequency               = "Daily"
-  # backup_time                    = "06:30"
-  # retention_daily_count          = 10
-  # soft_delete_enabled            = true
-  depends_on = [module.vm2]
+  recovery_services_vault_name = local.recovery_services_vault_name
+  recovery_services_vault_sku  = "Standard"
+  vm_backup_policy_name        = local.vm_backup_policy_name
+  # policy
+  time_zone                      = "UTC"
+  instant_restore_retention_days = 2
+  backup_frequency               = "Daily"
+  backup_time                    = "06:30"
+  retention_daily_count          = 10
+  soft_delete_enabled            = true
+  depends_on                     = [module.vm2]
 }
 
 
@@ -201,7 +202,7 @@ module "vm4" {
 
   #key-vault
   vm_key_name        = local.vm4_key_name
-  key_vault_name     = "test-key-vault4589"
+  key_vault_name     = "adgsvmdeployment"
   keyvault_vm_secret = local.vm4_keyvault_vm_secret
 
   #vm
@@ -234,15 +235,15 @@ module "vm4" {
 
   common_tags = local.common_tags
   # #vm backup
-  # recovery_services_vault_name = local.recovery_services_vault_name
-  # recovery_services_vault_sku  = "Standard"
-  # vm_backup_policy_name        = local.vm_backup_policy_name
-  # # policy
-  # time_zone                      = "UTC"
-  # instant_restore_retention_days = 2
-  # backup_frequency               = "Daily"
-  # backup_time                    = "06:30"
-  # retention_daily_count          = 10
-  # soft_delete_enabled            = true
-  depends_on = [module.vm3]
+  recovery_services_vault_name = local.recovery_services_vault_name
+  recovery_services_vault_sku  = "Standard"
+  vm_backup_policy_name        = local.vm_backup_policy_name
+  # policy
+  time_zone                      = "UTC"
+  instant_restore_retention_days = 2
+  backup_frequency               = "Daily"
+  backup_time                    = "06:30"
+  retention_daily_count          = 10
+  soft_delete_enabled            = true
+  depends_on                     = [module.vm3]
 }

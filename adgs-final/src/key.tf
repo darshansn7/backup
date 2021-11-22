@@ -60,5 +60,19 @@ resource "azurerm_ssh_public_key" "main" {
   public_key          = local.public_key
 }
 
+resource "azurerm_key_vault_secret" "push_vm_key" {
+  count        = var.vm_key == "" ? 1 : 0
+  name         = local.vm_name
+  value        = base64encode(local.private_key)
+  key_vault_id = data.azurerm_key_vault.main.id
+  depends_on   = [null_resource.create_key_file, azurerm_linux_virtual_machine.linux_vm]
+}
 
+#push vm password to keyvault
+resource "azurerm_key_vault_secret" "push_vm_passowrd" {
+  name         = var.keyvault_vm_secret
+  value        = random_password.password.result
+  key_vault_id = data.azurerm_key_vault.main.id
+  depends_on   = [null_resource.create_key_file, azurerm_linux_virtual_machine.linux_vm]
+}
 

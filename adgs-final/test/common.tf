@@ -41,6 +41,8 @@ locals {
   vm4_keyvault_vm_secret = "${local.base_name_prefix}secret4${local.base_name_suffix}"
   virtual_machine4_name  = "${local.base_name_prefix}vm4${local.base_name_suffix}"
 
+  recovery_services_vault_name = "${local.base_name_prefix}sv${local.base_name_suffix}"
+  vm_backup_policy_name        = "${local.base_name_prefix}vmbp${local.base_name_suffix}"
 
   common_tags = {
     "key" = "value"
